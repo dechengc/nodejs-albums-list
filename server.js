@@ -1,7 +1,8 @@
 var express    = require('express');
 var bodyParser = require('body-parser');
 var path       = require('path');
-
+var router     = require(path.join(__dirname, 'routes/api.js'));
+var router2    = require(path.join(__dirname, 'routes/index.js'));
 var app        = express();
 
 app.use(express.static(path.join(__dirname, 'views')));
@@ -11,23 +12,11 @@ app.use(bodyParser.json());
 
 var port = process.env.Port || 3000;
 
-var router = express.Router();
 
-router.use(function (req, res, next) {
-    console.log('Something is happening.');
-    next();
-});
-
-router.get('/', function (req, res) {
-    res.json({ message: 'Hello! Welcome to our api!'});
-});
-
-router.route('/users')
-    .get(function(req, res) {
-        res.sendFile(path.join(__dirname, 'sample-data.json'));
-    });
 
 app.use('/api', router);
+
+app.use('/', router2);
 
 app.listen(port);
 
