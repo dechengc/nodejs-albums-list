@@ -12,5 +12,5 @@ this is a simple NodeJS web server/client application that displays a list of mu
 
 Run the application
 
-1. set up the server
+1. set up the server, run "node server.js" in command line.
 2. open the url "http://localhost:3000" or "http://localhost:3000/albums" in the broswer.
